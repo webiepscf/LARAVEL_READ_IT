@@ -14,8 +14,8 @@ class Posts extends Controller
      */
     public function index(INT $limit = 10) {
       $posts = Post::orderBy('created_at', 'desc')
-                  -> take($limit)
-                  -> get();
+                  ->take($limit)
+                  ->get();
       return view('posts.index', compact('posts'));
     }
 
@@ -26,6 +26,17 @@ class Posts extends Controller
      */
     public function show (Post $post) {
       return view('posts.show', compact('post'));
+    }
+
+    public function more(Request $request) {
+
+      $limit = (isset($request->limit)) ? $request->limit : 10;
+
+      $posts = Post::orderBy('created_at', 'desc')
+                   ->take($limit)
+                   ->offset($request->offset)
+                   ->get();
+      return view('posts._list', compact('posts'));
     }
 
 }
