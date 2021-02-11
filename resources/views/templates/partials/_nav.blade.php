@@ -9,6 +9,9 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active"><a href="{{ route('posts.index') }}" class="nav-link">Blog</a></li>
         <li class="nav-item"><a href="{{ route('contacts.form') }}" class="nav-link">Contact</a></li>
+        @if (Auth::check())
+          <li class="nav-item"><a href="{{ route('forum.index') }}" class="nav-link">Forum</a></li>
+        @endif
       </ul>
     </div>
   </div>

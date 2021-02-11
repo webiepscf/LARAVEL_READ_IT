@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+use \App\Models\Produit;
+use \App\Models\Type;
+use \App\Models\Client;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +17,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+
+        // Type::factory()->count(10)
+        //                ->hasProduits(5)
+        //                ->create();
+        //
+        // Client::factory()->count(20)
+        //                  ->hasProduits(5)
+        //                  ->create();
+       // Produit::factory()->count(20)
+        //      ->hasClients(5)
+//                  ->create();
+
+        Type::factory()->count(10)
+                       ->has(Produit::factory()->count(5)
+                                                ->has(Client::factory()->count(2)))
+                       ->create();
     }
 }
