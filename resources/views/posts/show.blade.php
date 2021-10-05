@@ -22,4 +22,7 @@
   {{-- Comments du post --}}
   @include('comments._index', ['comments' => $post->comments])
   
+  {{-- Formulaire d'ajout d'un comment --}}
+  @include('comments._add-form')
+  
 @endsection
