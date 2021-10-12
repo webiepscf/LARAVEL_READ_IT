@@ -21,3 +21,6 @@ Route::get('/posts', [\App\Http\Controllers\PostsController::class, 'index'])
 
 Route::get('/posts/{post}/{slug}', [\App\Http\Controllers\PostsController::class, 'show'])
      ->name('posts.show');
+
+Route::get('/ajax/posts', [\App\Http\Controllers\PostsController::class, 'more'])
+->name('ajax.posts.more');
