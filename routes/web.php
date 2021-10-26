@@ -24,3 +24,7 @@ Route::get('/posts/{post}/{slug}', [\App\Http\Controllers\PostsController::class
 
 Route::get('/ajax/posts', [\App\Http\Controllers\PostsController::class, 'more'])
 ->name('ajax.posts.more');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
